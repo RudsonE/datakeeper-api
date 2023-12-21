@@ -13,6 +13,7 @@ router.get('/', (req, res) =>{
     res.send('Server running!')
 })
 
+//to add new person
 router.post('/person', async (req, res) =>{
     
     try {
@@ -21,6 +22,11 @@ router.post('/person', async (req, res) =>{
     } catch (error) {
         res.status(500).json({erro: error})
     }
+})
+
+//inform that 'get' is not allowed
+router.get('/person', (req, res) => {
+    res.status(405).json({message: 'Método não pemitido.', code: 405})
 })
 
 router.get('/getbyid', async (req, res) => {
